@@ -194,18 +194,18 @@ import datetime
 from bs4 import BeautifulSoup
 
 def check_connection():
-	try:
-	    baidu_request = requests.get('http://www.baidu.com')
-	    if (baidu_request.status_code == 200):
-		baidu_request.encoding = 'utf-8'
-		baidu_request_bsObj = BeautifulSoup(baidu_request.text, 'html.parser')
-		baidu_input = baidu_request_bsObj.find(value="百度一下")
-		if baidu_input == None:
-		    return False
-		return True
-	except requests.exceptions.ConnectionError as e
-		print(e)
-		return False
+    try:
+        baidu_request = requests.get('http://www.baidu.com')
+        if (baidu_request.status_code == 200):
+            baidu_request.encoding = 'utf-8'
+            baidu_request_bsObj = BeautifulSoup(baidu_request.text, 'html.parser')
+            baidu_input = baidu_request_bsObj.find(value="百度一下")
+            if baidu_input == None:
+                return False
+            return True
+    except requests.exceptions.ConnectionError as e:
+        print(e)
+        return False
 
 def srun_login():
 	init_getip()
