@@ -203,7 +203,7 @@ def check_connection():
 		if baidu_input == None:
 		    return False
 		return True
-	except equests.exceptions.ConnectionError as e
+	except requests.exceptions.ConnectionError as e
 		print(e)
 		return False
 
