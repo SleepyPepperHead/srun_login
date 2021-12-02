@@ -194,14 +194,18 @@ import datetime
 from bs4 import BeautifulSoup
 
 def check_connection():
-    baidu_request = requests.get('http://www.baidu.com')
-    if (baidu_request.status_code == 200):
-        baidu_request.encoding = 'utf-8'
-        baidu_request_bsObj = BeautifulSoup(baidu_request.text, 'html.parser')
-        baidu_input = baidu_request_bsObj.find(value="百度一下")
-        if baidu_input == None:
-            return False
-        return True
+	try:
+	    baidu_request = requests.get('http://www.baidu.com')
+	    if (baidu_request.status_code == 200):
+		baidu_request.encoding = 'utf-8'
+		baidu_request_bsObj = BeautifulSoup(baidu_request.text, 'html.parser')
+		baidu_input = baidu_request_bsObj.find(value="百度一下")
+		if baidu_input == None:
+		    return False
+		return True
+	except equests.exceptions.ConnectionError as e
+		print(e)
+		return False
 
 def srun_login():
 	init_getip()
@@ -211,11 +215,11 @@ def srun_login():
 
 
 if __name__ == '__main__':
-	global username,password
+# 	global username,password
 	username="3001190001"
 	password="54181452"
 	while True:
-		if str(datetime.datetime.now())[15] == '0':
+		if datetime.datetime.now().minute % 10 == 0:
 			print('check point every 10 minutes')
 			srun_login()
 
